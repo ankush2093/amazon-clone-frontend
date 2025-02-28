@@ -126,10 +126,10 @@ export default function CheckoutPage() {
             const { orderId } = data;
 
             const razorpay = new (window as any).Razorpay({
-                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY, 
+                key: "rzp_test_R6FOPHx1TKb5wC",
                 amount,
                 currency: "INR",
-                name: "My Amazon Store",
+                name: "My Store",
                 description: "Order Payment",
                 order_id: orderId,
                 handler: async function (response: any) {
@@ -222,17 +222,3 @@ export default function CheckoutPage() {
         </section>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
