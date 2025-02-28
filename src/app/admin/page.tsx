@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Product = {
   title: string;
@@ -36,7 +37,7 @@ const AdminDashboard: React.FC = () => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/product", {
+      const response = await fetch("https://amazon-colone-api.onrender.com/api/product", {
         method: "GET",
       });
 
@@ -49,7 +50,7 @@ const AdminDashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/all-orders')
+    fetch('https://amazon-colone-api.onrender.com/api/all-orders')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -72,7 +73,7 @@ const AdminDashboard: React.FC = () => {
         <Link href="/admin/dashboard">
           <button className="bg-blue-700 text-white px-4 py-2 rounded-lg">Dashboard</button>
         </Link>
-        
+
         <div>
           <button
             onClick={handleAddProduct}
@@ -110,12 +111,23 @@ const AdminDashboard: React.FC = () => {
                   <td className="border p-2">₹{order.price.toFixed(2)}</td>
                   <td className="border p-2">
                     <ul>
+                 
                       {order.products.map((product, index) => (
+                        
                         <li key={index} className="flex items-center gap-2">
-                          <img src={product.image} alt={product.title} className="w-12 h-12" />
+                          {/* <img src={product.image} alt={product.title} className="w-12 h-12" /> */}
+                          <Image
+                            className="h-12 w-12 hr"
+                            src={product.image}
+                            alt={product.title}
+                            width={40}
+                            height={40}
+                          />
+                             <hr className="w-4 h-0.5 my-8 bg-blue-800 border-0 rounded-sm dark:bg-gray-700"></hr>
                           {product.title} ({product.quantity})
                         </li>
                       ))}
+                     
                     </ul>
                   </td>
                   <td className="border p-2">

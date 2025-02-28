@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:4000/api/users";
+const API_BASE_URL = "https://amazon-colone-api.onrender.com/api/users";
 
 export default function OTPAuth() {
   const [step, setStep] = useState<"generate" | "verify" | "reset">("generate");

@@ -32,7 +32,7 @@ const ProductDetail: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/product/${id}`);
+        const response = await axios.get(`https://amazon-colone-api.onrender.com/api/product/${id}`);
         setProduct({ ...response.data, id: response.data._id });
       } catch (error) {
         console.error("Error fetching product details:", error);

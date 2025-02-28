@@ -29,7 +29,7 @@ const Header = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/product/products");
+        const response = await axios.get("https://amazon-colone-api.onrender.com/api/product/products");
         setProducts(response.data.products.map((p: any) => ({ id: p._id, title: p.title })));
       } catch (error) {
         console.error("Error fetching products:", error);

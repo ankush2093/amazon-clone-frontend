@@ -1,11 +1,10 @@
 "use client";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 
 export const loginUser = async (email: string, password: string) => {
   try {
-    const response = await axios.post("http://localhost:4000/api/users/login", {
+    const response = await axios.post("https://amazon-colone-api.onrender.com/api/users/login", {
       email,
       password,
     });
@@ -24,7 +23,7 @@ export const loginUser = async (email: string, password: string) => {
 
 export const registerUser = async (email: string, password: string, username: string) => {
   try {
-    const response = await axios.post("http://localhost:4000/api/users", {
+    const response = await axios.post("https://amazon-colone-api.onrender.com/api/users", {
       email,
       password,
       username,

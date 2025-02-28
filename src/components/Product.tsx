@@ -30,7 +30,7 @@ const Product: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/product/products");
+        const response = await axios.get("https://amazon-colone-api.onrender.com/api/product/products");
         const productData = response.data.products.map((p: any) => ({
           ...p,
           id: p._id, // Assign _id to id
