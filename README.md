@@ -18,8 +18,14 @@ It includes features like authentication, product search, cart functionality, pa
 ## 🌐 Live Demo  
 🔗 **[Amazon Clone Live](https://amazon-clone-frontend-neon.vercel.app/)**  
 
+
 ---
+🔗[Backend repo link](https://github.com/ankush2093/amazoncolneapi.git)**  
+---
+
+<h3>This is Home Ui</h3>
 <img width="1432" alt="Screenshot 2025-03-02 at 12 15 09 AM" src="https://github.com/user-attachments/assets/26aa73f2-3d4f-46cf-abf0-e933680dc6ff" />
+<h3></h3>
 
 <img width="1434" alt="Screenshot 2025-03-02 at 12 15 23 AM" src="https://github.com/user-attachments/assets/5f87c00c-9a06-40d8-8b24-d06e8bb24ee1" />
 
@@ -28,8 +34,6 @@ It includes features like authentication, product search, cart functionality, pa
 <img width="1414" alt="Screenshot 2025-03-02 at 12 15 46 AM" src="https://github.com/user-attachments/assets/a8ab34e0-f5c7-43ff-a691-20d9aba45862" />
 
 
-
-🔗[Backend repo link](https://github.com/ankush2093/amazoncolneapi.git)**  
 
 ## 📦 Installation  
 ### **Frontend Setup**  
