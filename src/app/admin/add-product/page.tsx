@@ -2,6 +2,7 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import Image from "next/image";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Define Product Interface
 interface Product {
@@ -38,7 +39,7 @@ const AdminProductPage: React.FC = () => {
   // Fetch Products
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("https://amazon-colone-api.onrender.com/api/product/products");
+      const res = await axios.get(`${baseUrl}/product/products`);
       setProducts(res.data.products || []);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -49,7 +50,7 @@ const AdminProductPage: React.FC = () => {
   // Handle Delete
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`https://amazon-colone-api.onrender.com/api/product/delete/${id}`);
+      await axios.delete(`${baseUrl}/product/delete/${id}`);
       fetchProducts();
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -86,9 +87,9 @@ const AdminProductPage: React.FC = () => {
       };
 
       if (formData._id) {
-        await axios.put(`https://amazon-colone-api.onrender.com/api/product/update/${formData._id}`, payload);
+        await axios.put(`${baseUrl}/product/update/${formData._id}`, payload);
       } else {
-        await axios.post("https://amazon-colone-api.onrender.com/api/product/create", payload);
+        await axios.post(`${baseUrl}/product/create`, payload);
       }
 
       fetchProducts();

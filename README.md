@@ -1,55 +1,36 @@
-# 🛒 Amazon Clone - Built with Next.js & Express.js  
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A **fully responsive** Amazon clone built using **Next.js** for the frontend and **Express.js** for the backend.  
-It includes features like authentication, product search, cart functionality, payment integration, and a small demo of the **Admin UI**.
+## Getting Started
 
----
+First, run the development server:
 
-## 🚀 Features  
-✔ **Next.js 14 with Server Components**  
-✔ **Express.js Backend with MongoDB**  
-✔ **Cart & Checkout with Razorpay Payment Gateway**  
-✔ **JWT-based Authentication (Login/Register)**  
-✔ **Optimized for SEO & Performance**  
-✔ **Admin Panel for Managing Products & Orders**  
-
----
-
-## 🌐 Live Demo  
-🔗 **[Amazon Clone Live](https://amazon-clone-frontend-neon.vercel.app/)**  
-
-
----
-🔗[Backend repo link](https://github.com/ankush2093/amazoncolneapi.git)**  
----
-
-<h3>This is Home Ui</h3>
-<img width="1432" alt="Screenshot 2025-03-02 at 12 15 09 AM" src="https://github.com/user-attachments/assets/26aa73f2-3d4f-46cf-abf0-e933680dc6ff" />
-<h3></h3>
-
-<img width="1434" alt="Screenshot 2025-03-02 at 12 15 23 AM" src="https://github.com/user-attachments/assets/5f87c00c-9a06-40d8-8b24-d06e8bb24ee1" />
-
-
-<img width="1425" alt="Screenshot 2025-03-02 at 12 15 30 AM" src="https://github.com/user-attachments/assets/b290276a-1924-45fc-9e6b-fe57e48705ea" />
-<img width="1414" alt="Screenshot 2025-03-02 at 12 15 46 AM" src="https://github.com/user-attachments/assets/a8ab34e0-f5c7-43ff-a691-20d9aba45862" />
-
-
-
-## 📦 Installation  
-### **Frontend Setup**  
-```sh
-git clone https://github.com/ankush2093/amazon-clone-frontend.git
-cd amazon-clone-frontend
-npm install
+```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Learn More
 
+To learn more about Next.js, take a look at the following resources:
 
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,10 +1,11 @@
 "use client";
 import axios from "axios";
 import Cookies from "js-cookie";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const loginUser = async (email: string, password: string) => {
   try {
-    const response = await axios.post("https://amazon-colone-api.onrender.com/api/users/login", {
+    const response = await axios.post(`${baseUrl}/users/login`, {
       email,
       password,
     });
@@ -12,6 +13,8 @@ export const loginUser = async (email: string, password: string) => {
     if (response.data.token) {
       Cookies.set("token", response.data.token, { expires: 1 }); // 1 day expiry
       localStorage.setItem("username", response.data.user); 
+      localStorage.setItem("userId", response.data.userId); // Use the correct key name
+      console.log(localStorage.getItem("cart"));
       return { success: true, message: "Login successful!" };
     } else {
       return { success: false, message: response.data.message };
@@ -23,7 +26,7 @@ export const loginUser = async (email: string, password: string) => {
 
 export const registerUser = async (email: string, password: string, username: string) => {
   try {
-    const response = await axios.post("https://amazon-colone-api.onrender.com/api/users", {
+    const response = await axios.post(`${baseUrl}/users`, {
       email,
       password,
       username,

@@ -7,6 +7,7 @@ import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { useCart } from "../lib/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface Product {
   storeName: string;
@@ -20,6 +21,7 @@ interface Product {
     rate: number;
     count: number;
   };
+  
 }
 
 const Product: React.FC = () => {
@@ -30,7 +32,7 @@ const Product: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://amazon-colone-api.onrender.com/api/product/products");
+        const response = await axios.get(`${baseUrl}/product/products`);
         const productData = response.data.products.map((p: any) => ({
           ...p,
           id: p._id, // Assign _id to id
@@ -81,17 +83,17 @@ const Product: React.FC = () => {
   return (
     <div className="p-1 max-w-7xl mx-auto">
       <ToastContainer position="top-right" autoClose={2000} />
-      <h2 className="text-2xl font-bold mb-6 text-center">🛍️ Product List</h2>
+      {/* <h2 className="text-2xl font-bold mb-6 text-center">🛍️ Product List</h2> */}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
         {products.map((product) => (
           <div
             key={product.id}
-            className="border rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300"
+            className="border rounded-lg p-3 sm:p-4 shadow-md hover:shadow-lg transition duration-300"
           >
             {/* Link to product details page */}
             <Link href={`/product/${product.id}`} className="block">
-              <div className="w-full h-48 flex justify-center items-center cursor-pointer">
+              <div className="w-full h-40 sm:h-48 flex justify-center items-center cursor-pointer">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -100,23 +102,23 @@ const Product: React.FC = () => {
               </div>
             </Link>
 
-            <h3 className="text-lg font-semibold mt-3">{product.title}</h3>
-            <p className="text-gray-700 mt-1">
+            <h3 className="text-sm sm:text-lg font-semibold mt-2 sm:mt-3">{product.title}</h3>
+            <p className="text-gray-700 mt-1 text-sm sm:text-base">
               Price: <span className="font-bold">₹{product.price}</span>
             </p>
-            <p className="text-sm text-gray-500">Category: {product.category}</p>
-            <p className="text-sm text-yellow-500">
+            <p className="text-xs sm:text-sm text-gray-500">Category: {product.category}</p>
+            <p className="text-xs sm:text-sm text-yellow-500">
               ⭐ {product.rating.rate} ({product.rating.count} reviews)
             </p>
 
             {/* Buttons */}
-            <div className="flex gap-2 mt-4">
+            <div className="flex gap-2 mt-3 sm:mt-4">
               <button
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent link navigation
                   handleAddToCart(product);
                 }}
-                className="flex items-center gap-2 bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600 transition w-full justify-center"
+                className="flex items-center gap-2 bg-blue-500 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-blue-600 transition w-full justify-center text-xs sm:text-sm"
               >
                 <FaShoppingCart /> Add to Cart
               </button>
@@ -125,7 +127,7 @@ const Product: React.FC = () => {
                   e.stopPropagation(); // Prevent link navigation
                   handleToggleFavorite(product);
                 }}
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition w-full justify-center ${
+                className={`flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition w-full justify-center text-xs sm:text-sm ${
                   favorites.some((fav) => fav.id === product.id) ? "bg-red-500 text-white" : "bg-gray-200 text-gray-700"
                 }`}
               >
@@ -140,11 +142,6 @@ const Product: React.FC = () => {
 };
 
 export default Product;
-
-
-
-
-
 
 
 

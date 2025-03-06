@@ -18,7 +18,9 @@ export default function CartPage() {
     cart.forEach((item, index) => {
       query.append(`product[${index}][title]`, item.title);
       query.append(`product[${index}][image]`, item.thumbnail);
-      query.append(`product[${index}][quantity]`, String(item.quantity)); // Convert to string explicitly
+      query.append(`product[${index}][price]`, item.price.toFixed(2));
+      query.append(`product[${index}][storeName]`, item.storeName);
+      query.append(`product[${index}][quantity]`, String(item.quantity)); 
     });
 
     router.push(`/checkout?${query.toString()}`);

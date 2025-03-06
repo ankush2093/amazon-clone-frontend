@@ -11,6 +11,7 @@ import { BiCaretDown } from "react-icons/bi";
 import { useCart } from "@/lib/CartContext"; 
 import axios from "axios";
 import { useRouter } from "next/navigation";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface Product {
   id: number;
@@ -29,7 +30,7 @@ const Header = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://amazon-colone-api.onrender.com/api/product/products");
+        const response = await axios.get(`${baseUrl}/product/products`);
         setProducts(response.data.products.map((p: any) => ({ id: p._id, title: p.title })));
       } catch (error) {
         console.error("Error fetching products:", error);

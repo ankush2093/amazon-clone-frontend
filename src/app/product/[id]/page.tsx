@@ -7,6 +7,8 @@ import { useCart } from "../../../lib/CartContext";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Product from "../../../components/Product";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface Product {
   id: number;
@@ -32,7 +34,7 @@ const ProductDetail: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://amazon-colone-api.onrender.com/api/product/${id}`);
+        const response = await axios.get(`${baseUrl }/product/${id}`);
         setProduct({ ...response.data, id: response.data._id });
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -79,6 +81,7 @@ const ProductDetail: React.FC = () => {
   };
 
   return (
+    <>
     <div className="p-4 max-w-5xl mx-auto">
       <ToastContainer position="top-right" autoClose={2000} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -111,7 +114,13 @@ const ProductDetail: React.FC = () => {
           </div>
         </div>
       </div>
+
+
+   
     </div>
+    <Product />
+      
+    </>
   );
 };
 

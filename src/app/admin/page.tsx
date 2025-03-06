@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 type Product = {
   title: string;
@@ -37,7 +38,7 @@ const AdminDashboard: React.FC = () => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await fetch("https://amazon-colone-api.onrender.com/api/product", {
+      const response = await fetch(`${baseUrl}/product`, {
         method: "GET",
       });
 
@@ -50,7 +51,7 @@ const AdminDashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch('https://amazon-colone-api.onrender.com/api/all-orders')
+    fetch(`${baseUrl}/all-orders`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {

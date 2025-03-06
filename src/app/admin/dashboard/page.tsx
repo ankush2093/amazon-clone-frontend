@@ -26,7 +26,7 @@ export default function OrdersDashboard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://amazon-colone-api.onrender.com/api/analytics"); // Adjust API path
+        const response = await fetch("http://localhost:4000/api/analytics"); // Adjust API path
         const result: { success: boolean; data: OrderData[] } = await response.json();
 
         if (result.success) {
