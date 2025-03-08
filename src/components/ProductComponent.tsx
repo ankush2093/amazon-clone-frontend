@@ -24,7 +24,7 @@ interface Product {
   
 }
 
-const Product: React.FC = () => {
+const ProductComponent: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { addToCart, favorites, toggleFavorite } = useCart();
@@ -141,7 +141,7 @@ const Product: React.FC = () => {
   );
 };
 
-export default Product;
+export default ProductComponent;
 
 
 

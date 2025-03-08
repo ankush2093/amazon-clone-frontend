@@ -7,7 +7,7 @@ import { useCart } from "../../../lib/CartContext";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Product from "../../../components/Product";
+import ProductComponent from "../../../components/ProductComponent";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface Product {
@@ -118,7 +118,7 @@ const ProductDetail: React.FC = () => {
 
    
     </div>
-    <Product />
+    <ProductComponent />
       
     </>
   );
