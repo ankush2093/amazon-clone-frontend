@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-// const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export interface CartItem {
   id: number;
@@ -43,7 +43,7 @@ export const useCart = (): CartContextType => {
   return context;
 };
 
-const API_BASE_URL = "http://localhost:4000/api/cart";
+// const API_BASE_URL = "http://localhost:4000/api/cart";
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -61,7 +61,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const fetchCart = async () => {
       if (token && userId) {
         try {
-          const res = await axios.get(`${API_BASE_URL}/${userId}`, {
+          const res = await axios.get(`${API_BASE_URL}/cart/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           const fetchedCart = res.data.items || [];
@@ -82,12 +82,13 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       fetchCart();
     }
   }, [token, userId]);
+  
   /** Sync local cart to API after login */
 
   // const syncLocalToApi = async () => {
   //   if (token && userId) {
   //     try {
-  //       await axios.post(`${API_BASE_URL}/sync`, { userId, cart, favorites }, {
+  //       await axios.post(`${API_BASE_URL}/cart/sync`, { userId, cart, favorites }, {
   //         headers: { Authorization: `Bearer ${token}` },
   //       });
 
@@ -117,7 +118,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     if (token && userId) {
       try {
-        await axios.post(`${API_BASE_URL}/add`, { userId, item }, {
+        await axios.post(`${API_BASE_URL}/cart/add`, { userId, item }, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } catch (error) {
@@ -133,7 +134,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     if (token && userId) {
       try {
-        await axios.post(`${API_BASE_URL}/remove`, { userId, itemId: id }, {
+        await axios.post(`${API_BASE_URL}/cart/remove`, { userId, itemId: id }, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } catch (error) {
@@ -142,13 +143,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // Increase and decrease quantity dosen't work properly from api
   const increaseQuantity = async (id: number) => {
     setCart((prev) =>
       prev.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item))
     );
     if (token && userId) {
-      await axios.post(`${API_BASE_URL}/update-quantity`, { userId, itemId: id, type: "increase" }, {
+      await axios.post(`${API_BASE_URL}/cart/update-quantity`, { userId, itemId: id, type: "increase" }, {
         headers: { Authorization: `Bearer ${token}` },
       });
     }
@@ -161,7 +161,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         .filter((item) => item.quantity > 0)
     );
     if (token && userId) {
-      await axios.post(`${API_BASE_URL}/update-quantity`, { userId, itemId: id, type: "decrease" }, {
+      await axios.post(`${API_BASE_URL}/cart/update-quantity`, { userId, itemId: id, type: "decrease" }, {
         headers: { Authorization: `Bearer ${token}` },
       });
     }
@@ -170,7 +170,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const clearCart = async () => {
     setCart([]);
     if (token && userId) {
-      await axios.post(`${API_BASE_URL}/clear`, { userId }, {
+      await axios.post(`${API_BASE_URL}/cart/clear`, { userId }, {
         headers: { Authorization: `Bearer ${token}` },
       });
     }
@@ -183,7 +183,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         : [...prev, item];
     });
     if (token && userId) {
-      await axios.post(`${API_BASE_URL}/favorite`, { userId, item }, {
+      await axios.post(`${API_BASE_URL}/cart/favorite`, { userId, item }, {
         headers: { Authorization: `Bearer ${token}` },
       });
     }
